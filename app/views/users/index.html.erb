@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= render 'layouts/user', user: @user %>
+      <%= render 'layouts/book', book: @book %>
+    </div>
+
+    <div class="col-8">
+      <h1>Users</h1>
+      
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">image</th>
+            <th scope="col">name</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td scope="row"><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.png", size:'50x50' %></td>
+              <td scope="row"><%= user.name %></td>
+              <td scope="row"><%= link_to 'Show', "/users/#{@user.id}"  %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
