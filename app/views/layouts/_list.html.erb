@@ -6,6 +6,7 @@
       <th></th>
       <th scope="col">Title</th>
       <th scope="col">Option</th>
+      <th scope="col"></th>
     </tr>
   </thead>
 
@@ -19,6 +20,12 @@
         </td>
         <td scope="row"><%= link_to book.title, book_path(book) %></td>
         <td scope="row"><%= book.body %></td>
+        <td id="favorites_buttons_<%= book.id %>">
+          <%= render 'favorites/favorite', book: book %>
+        </td>
+        <td scope="row">
+          <p><%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %></p>
+        </td>
       </tr>
     <% end %>
   </tbody>
